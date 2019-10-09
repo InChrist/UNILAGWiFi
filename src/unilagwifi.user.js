@@ -1,9 +1,18 @@
  function manualSignIn(){
     alert('You Have to be a student of UNILAG Since at least 2017. Just a Heads up ;)');
-                let firstName=prompt('Type in your First Name (It Has to be your first name, so it works)');
-                let matNo=prompt('Type in your Matric Number');
-                let uName= `${matNo}@students.unilag.edu.ng`;
-                let password=`${matNo.toString().slice(0,5)}${firstName.slice(0,3).toLocaleUpperCase()}`;
+    
+    let matNo=prompt('Type in your Matric Number');
+
+    if(confirm('Are you a postgraduate student?')==true){
+        let lastName=prompt('Type in your surname (It Has to be your surname, so it works)');
+        let uName= `${matNo}@pg.unilag.edu.ng`;
+        let password=`${matNo.toString().slice(4,9)}${lastName.slice(0,3).toLocaleUpperCase()}`;
+        }
+    else{
+        let firstName=prompt('Type in your First Name (It Has to be your first name, so it works)');
+        let uName= `${matNo}@students.unilag.edu.ng`;
+        let password=`${matNo.toString().slice(0,5)}${firstName.slice(0,3).toLocaleUpperCase()}`;
+    }     
                 localStorage.setItem('userName',`${uName}`);
                 localStorage.setItem('password',`${password}`);
                     document.getElementsByName('username')[1].value=uName;
